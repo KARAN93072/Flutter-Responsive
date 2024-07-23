@@ -26,19 +26,21 @@ class _MobileTabOrientationGridviewState
               : null,
           body: Row(
             children: [
-              if (!isMobile)
+              if (!isPortrait && isMobile)
                 Container(
                   height: double.infinity,
                   width: 200,
-                  color: Colors.blueGrey,
+                  color: Colors.black,
                 ),
-              GridView.count(
-                crossAxisCount: isPortrait ? 2 : 3,
-                children: List.generate(40, (index) {
-                  return Card(
-                    child: Center(child: Text('$index')),
-                  );
-                }),
+              Expanded(
+                child: GridView.count(
+                  crossAxisCount: isPortrait ? 2 : 3,
+                  children: List.generate(40, (index) {
+                    return Card(
+                      child: Center(child: Text('$index')),
+                    );
+                  }),
+                ),
               ),
             ],
           ),
